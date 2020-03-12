@@ -22,27 +22,27 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/share/i3xrocks/$BLOCK_NAME
-separator_block_width=40
+# command=/usr/share/i3xrocks/$BLOCK_NAME
+command=~/i3blocks-contrib/$BLOCK_NAME/$BLOCK_NAME
+separator_block_width=30
 markup=pango
-color=xresource:i3xrocks.value.color
-label_color=xresource:i3xrocks.label.color
+interval=10
+# color=xresource:i3xrocks.value.color
+# label_color=xresource:i3xrocks.label.color
 
 # Network manager VPN
 #
 # Displays currently connected VPN using the nm-cli tool.
-[nm-vpn]
-interval=5
-command=nmcli | head -n 1 | cut -d" " -f1
+[vpn]
+command=nmcli -t connection show --active | grep -i vpn | cut -d: -f1
 
 # Wifi
 #
 # Displays the wifi network's name
 # If the auto-discovered wifi device is incorrect,
 # override the "instance" value with the desired device
-[wifi2]
-#instance=wlp3s0 Replace with your wifi device if you need
-interval=5
+[wifi]
+command=~/i3blocks-contrib/$BLOCK_NAME/wifi2
 
 # Keyboard layout
 #
@@ -50,14 +50,11 @@ interval=5
 #[keyboard_layout]
 #interval=persist
 
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
 [cpu_usage]
-interval=5
-min_width=100%
-#separator=false
+
+[memory]
+
+[temperature]
 
 # Battery indicator
 #
@@ -70,17 +67,22 @@ min_width=100%
 #
 # To display the battery icon only, uncomment "icon_only".
 [battery2]
-interval=30
-#display_time_left=true
+interval=60
 percent_color=true
-#icon_only=true
 
 # [calc]
 # full_text=Calculator
 # command=gnome-calculator >/dev/null
 
 # Date Time
-#
+# [rofi-calendar]
+# interval=3600
+# LABEL= 
+# DATEFTM=+%a %d %b %Y
+# SHORTFTM=+%Y-%m-%d
+# HEIGHT=180
+# WIDTH=220
+
 [time]
 interval=60
 command=date +"%m-%d %a %H:%M %Z"
@@ -89,10 +91,14 @@ command=date +"%m-%d %a %H:%M %Z"
 
 [time]
 interval=60
-command=date +"%H:%M %Z" -u
+command=TZ='Asia/Shanghai' date +"%H:%M %Z"
 
 [separator]
 
 [time]
 interval=60
-command=TZ='Asia/Shanghai' date +"%H:%M %Z"
+command=date +"%H:%M %Z" -u
+
+[shutdown_menu]
+full_text=
+interval=0
