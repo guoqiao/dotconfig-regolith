@@ -7,10 +7,6 @@
 set $mod Mod4
 set $alt Mod1
 
-# i3xrocks config file
-# set $i3xrocks_config /etc/regolith/i3xrocks/config
-set $i3xrocks_config ~/.config/regolith/i3xrocks/config
-
 # compton config file
 set $compton_config /etc/regolith/compton/config
 
@@ -314,7 +310,6 @@ bar {
   position top
   font $i3-wm.bar.font
   separator_symbol " "
-  # status_command i3xrocks -c $i3xrocks_config
   status_command ~/.config/regolith/i3status-top.py
   tray_output none
   workspace_buttons no
@@ -340,7 +335,6 @@ bar {
   position bottom
   font $i3-wm.bar.font
   separator_symbol " "
-  # status_command i3xrocks -c $i3xrocks_config
   status_command ~/.config/regolith/i3status-bottom.py
 # status_command ~/.config/regolith/i3status-example.py
   tray_output primary
