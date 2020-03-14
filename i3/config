@@ -11,7 +11,6 @@ set $alt Mod1
 set $compton_config /etc/regolith/compton/config
 
 # path to terminal. Override this to specify a custom terminal.
-set $terminal_path /usr/bin/terminator
 
 # Color values are defined in ~/.Xresources-regolith
 # These are the labels which define each i3 workspace.
@@ -41,7 +40,7 @@ floating_modifier $mod
 hide_edge_borders smart
 
 # start a terminal
-bindsym $mod+Return exec $terminal_path
+bindsym $mod+Return exec /usr/bin/terminator
 
 # start a web browser
 bindsym $mod+Shift+Return exec /usr/bin/sensible-browser
