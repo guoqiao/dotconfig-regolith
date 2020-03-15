@@ -41,63 +41,6 @@ set_from_resource $ws17 i3-wm.workspace.17.name "17"
 set_from_resource $ws18 i3-wm.workspace.18.name "18"
 set_from_resource $ws19 i3-wm.workspace.19.name "19"
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-hide_edge_borders smart
-
-# start a terminal
-bindsym $mod+Return exec /usr/bin/terminator
-
-# start a web browser
-bindsym $mod+Shift+Return exec /usr/bin/sensible-browser
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-set_from_resource $rofiTheme rofi.theme "regolith-theme"
-
-# rofi app and window launchers
-bindsym $mod+space exec rofi -show drun -theme $rofiTheme
-bindsym $mod+Shift+space exec rofi -show run -theme $rofiTheme
-bindsym $mod+Ctrl+space exec rofi -show window -theme $rofiTheme
-
-# change focus
-bindsym $mod+Left  focus left
-bindsym $mod+Down  focus down
-bindsym $mod+Up    focus up
-bindsym $mod+Right focus right
-
-# move windows in workspaces
-bindsym $mod+Shift+Left  move left
-bindsym $mod+Shift+Down  move down
-bindsym $mod+Shift+Up    move up
-bindsym $mod+Shift+Right move right
-
-# toggle split orientation
-bindsym $mod+BackSpace split toggle
-# bindsym $mod+h split h
-# bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change gaps interactively
-bindsym $mod+minus gaps inner current minus 6
-bindsym $mod+plus gaps inner current plus 6
-
-# show/hide keybindings
-bindsym $mod+Shift+question exec --no-startup-id /usr/bin/conky-toggle
-
-# toggle tiling / floating
-bindsym $mod+Shift+f floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+Shift+t focus mode_toggle
-
-# toggle tabbed mode
-bindsym $mod+t layout toggle tabbed splith splitv
-
 # move to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -118,10 +61,6 @@ bindsym $mod+Ctrl+6 workspace $ws16
 bindsym $mod+Ctrl+7 workspace $ws17
 bindsym $mod+Ctrl+8 workspace $ws18
 bindsym $mod+Ctrl+9 workspace $ws19
-
-# cycle across workspaces
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -165,9 +104,70 @@ bindsym $mod+$alt+Ctrl+7 move container to workspace $ws17; workspace $ws17
 bindsym $mod+$alt+Ctrl+8 move container to workspace $ws18; workspace $ws18
 bindsym $mod+$alt+Ctrl+9 move container to workspace $ws19; workspace $ws19
 
+# cycle across workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 # move to new output
 bindsym Shift+$mod+bracketright move workspace to output right
 bindsym Shift+$mod+bracketleft move workspace to output left
+
+# change focus
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# move windows in workspaces
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+hide_edge_borders smart
+
+# start a terminal
+bindsym $mod+Return exec /usr/bin/terminator
+
+# start a web browser
+bindsym $mod+Shift+Return exec /usr/bin/sensible-browser
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+set_from_resource $rofiTheme rofi.theme "regolith-theme"
+
+# rofi app and window launchers
+bindsym $mod+space exec rofi -show drun -theme $rofiTheme
+bindsym $mod+Shift+space exec rofi -show run -theme $rofiTheme
+bindsym $mod+Ctrl+space exec rofi -show window -theme $rofiTheme
+
+# toggle split orientation
+bindsym $mod+BackSpace split toggle
+# bindsym $mod+h split h
+# bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change gaps interactively
+bindsym $mod+minus gaps inner current minus 6
+bindsym $mod+plus gaps inner current plus 6
+
+# show/hide keybindings
+bindsym $mod+Shift+question exec --no-startup-id /usr/bin/conky-toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+t focus mode_toggle
+
+# toggle tabbed mode
+bindsym $mod+t layout toggle tabbed splith splitv
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
