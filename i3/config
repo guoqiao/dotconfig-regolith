@@ -7,6 +7,13 @@
 set $mod Mod4
 set $alt Mod1
 
+# title bar font
+font pango:Source Code Pro 13
+title_align left  # left|center|right
+# Disable titlebar
+new_window pixel 1
+new_float pixel 1
+
 # compton config file
 set $compton_config /etc/regolith/compton/config
 
@@ -221,10 +228,6 @@ mode "Resize Mode" {
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "Resize Mode"
-
-# Disable titlebar
-new_window pixel 1
-new_float pixel 1
 
 # Gaps (i3-gaps)
 gaps inner 5
