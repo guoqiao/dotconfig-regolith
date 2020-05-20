@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from i3pystatus import Status
-from i3pystatus.weather import weathercom
 
 status = Status()
 
@@ -74,19 +73,5 @@ status.register(
     todayhighlight=[' [', '] '],
     on_leftclick='gnome-calendar',
 )
-
-status.register(
-    'weather',
-    format='{city} {condition} {current_temp}{temp_unit}[ {icon}][ Hi: {high_temp}][ Lo: {low_temp}][ {update_error}]',
-    interval=900,
-    colorize=True,
-    hints={'markup': 'pango'},
-    backend=weathercom.Weathercom(
-        location_code='a923c5e150d89346b6976561f561bd5a1e5d04bd21f95ff5fa5f62d9df22a03b',
-        units='metric',  # imperial|metric
-        update_error='<span color="#ff0000">!</span>',
-    ),
-)
-
 
 status.run()
