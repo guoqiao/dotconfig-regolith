@@ -38,7 +38,7 @@ status.register(
 status.register(
     "text",
     text='',
-    on_leftclick='gnome-screenshot --interactive',
+    on_leftclick='gnome-screenshot --interactive --area',
 )
 
 status.register(
