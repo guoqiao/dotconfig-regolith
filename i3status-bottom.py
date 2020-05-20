@@ -78,10 +78,10 @@ status.register(
     "network",
     interface="wlp3s0",
     interval=5,
-    format_up="{essid} {bytes_recv: >3}KB/s",
+    auto_units=True,
+    format_up="{essid} {bytes_recv}",
     on_leftclick='gnome-control-center wifi',
     on_rightclick='nm-connection-editor',
 )
-
 
 status.run()
