@@ -58,9 +58,9 @@ status.register(
     "clock",
     format=[
         #  ("%m-%d %a %H:%M:%S %Z", "NZ"),
-        ("%H:%M:%S %Z", "NZ"),
-        ("%H:%M %Z", "Asia/Shanghai"),
-        ("%H:%M %Z", "UTC"),
+        ("%d %a %H:%M:%S %Z", "NZ"),
+        ("%d %a %H:%M %Z", "Asia/Shanghai"),
+        ("%d %a %H:%M %Z", "UTC"),
     ],
     on_leftclick='gnome-control-center datetime',
 )
