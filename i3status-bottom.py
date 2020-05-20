@@ -50,6 +50,13 @@ status.register(
 )
 
 status.register(
+    'shell',
+    command='sensors | grep fan | cut -d: -f2 | tr -d " "',
+    format='{output}',
+    on_leftclick='/snap/bin/gnome-system-monitor --show-processes-tab',
+)
+
+status.register(
     "temp",
     format="{temp:.0f}°C",
 )
