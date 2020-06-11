@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
+from pathlib import Path
 from i3pystatus import Status
+
+HERE = Path(__file__).parent
 
 status = Status()
 
@@ -16,11 +19,9 @@ status.register(
 
 status.register(
     'shell',
-    command="curl https://api.exchangeratesapi.io/latest?base=NZD | jq '.rates.CNY' | cut -c1-4",
-    format='NZD/CNY: {output}',
-    on_leftclick='google-chrome https://api.exchangeratesapi.io/latest?base=NZD',
+    command=str(HERE/'status.py'),
+    format='{output}',
     interval=3600,
 )
-
 
 status.run()
