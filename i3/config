@@ -7,6 +7,7 @@
 set $mod Mod4
 set $alt Mod1
 
+
 # title bar font
 font pango:Source Code Pro 13
 title_align left  # left|center|right
@@ -14,8 +15,25 @@ title_align left  # left|center|right
 new_window pixel 1
 new_float pixel 1
 
-# compton config file
-set $compton_config /etc/regolith/compton/config
+hide_edge_borders smart
+
+
+# Enable popup during fullscreen
+popup_during_fullscreen smart
+# window focus follows your mouse movements as the mouse crosses window borders
+focus_follows_mouse yes
+
+
+# Gaps (i3-gaps)
+gaps inner 5
+gaps outer 0
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+# change gaps interactively
+bindsym $mod+minus gaps inner current minus 6
+bindsym $mod+plus  gaps inner current plus  6
+
+set_from_resource $rofiTheme rofi.theme "regolith-theme"
 
 # path to terminal. Override this to specify a custom terminal.
 
@@ -40,6 +58,18 @@ set_from_resource $ws16 i3-wm.workspace.16.name "16"
 set_from_resource $ws17 i3-wm.workspace.17.name "17"
 set_from_resource $ws18 i3-wm.workspace.18.name "18"
 set_from_resource $ws19 i3-wm.workspace.19.name "19"
+
+# somehow not working
+# https://i3wm.org/docs/userguide.html#workspace_screen
+# workspace $ws1 output eDP-1
+# workspace $ws2 output eDP-1
+# workspace $ws3 output eDP-1
+# workspace $ws4 output DP-1
+# workspace $ws5 output DP-1
+# workspace $ws6 output DP-1
+# workspace $ws7 output HDMI-2
+# workspace $ws8 output HDMI-2
+# workspace $ws9 output HDMI-2
 
 # move to workspace
 bindsym $mod+1 workspace $ws1
@@ -110,7 +140,7 @@ bindsym $mod+Shift+Tab workspace prev
 
 # move to new output
 bindsym Shift+$mod+bracketright move workspace to output right
-bindsym Shift+$mod+bracketleft move workspace to output left
+bindsym Shift+$mod+bracketleft  move workspace to output left
 
 # change focus
 bindsym $mod+Left  focus left
@@ -127,8 +157,6 @@ bindsym $mod+Shift+Right move right
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-hide_edge_borders smart
-
 # start a terminal
 bindsym $mod+Return exec /usr/bin/terminator
 
@@ -137,8 +165,6 @@ bindsym $mod+Shift+Return exec /usr/bin/sensible-browser
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-set_from_resource $rofiTheme rofi.theme "regolith-theme"
 
 # rofi app and window launchers
 bindsym $mod+space exec rofi -show drun -theme $rofiTheme
@@ -210,17 +236,6 @@ mode "Resize Mode" {
 }
 bindsym $mod+r mode "Resize Mode"
 
-# Gaps (i3-gaps)
-gaps inner 5
-gaps outer 0
-
-# Only enable gaps on a workspace when there is at least one container
-smart_gaps on
-
-# change gaps interactively
-bindsym $mod+minus gaps inner current minus 6
-bindsym $mod+plus  gaps inner current plus  6
-
 set_from_resource $focused.color.border i3-wm.client.focused.color.border "#002b36"
 set_from_resource $focused.color.background i3-wm.client.focused.color.background "#586e75"
 set_from_resource $focused.color.text i3-wm.client.focused.color.text "#fdf6e3"
@@ -248,16 +263,16 @@ set_from_resource $urgent.color.child_border i3-wm.client.urgent.color.child_bor
 
 # Window Border color
 # class                 border                             background                         text                               indicator                          child_border
-client.focused          $focused.color.border              $focused.color.background          $focused.color.text                $focused.color.indicator           $focused.color.child_border
-client.focused_inactive $focused_inactive.color.border     $focused_inactive.color.background $focused_inactive.color.text       $focused_inactive.color.indicator  $focused_inactive.color.child_border
+# client.focused          $focused.color.border              "#006600"          $focused.color.text                $focused.color.indicator           $focused.color.child_border
+# client.focused_inactive $focused_inactive.color.border     $focused_inactive.color.background $focused_inactive.color.text       $focused_inactive.color.indicator  $focused_inactive.color.child_border
+# client.unfocused        $unfocused.color.border            $unfocused.color.background        $unfocused.color.text              $unfocused.color.indicator         $unfocused.color.child_border
+# client.urgent           $urgent.color.border               $urgent.color.background           $urgent.color.text                 $urgent.color.indicator            $urgent.color.child_border
+
+client.focused          $focused.color.border              "#adf542"  "#111111"    $focused.color.indicator           $focused.color.child_border
+client.focused_inactive $focused_inactive.color.border     "#839496"  "#222222"    $focused_inactive.color.indicator  $focused_inactive.color.child_border
 client.unfocused        $unfocused.color.border            $unfocused.color.background        $unfocused.color.text              $unfocused.color.indicator         $unfocused.color.child_border
 client.urgent           $urgent.color.border               $urgent.color.background           $urgent.color.text                 $urgent.color.indicator            $urgent.color.child_border
 
-# Enable popup during fullscreen
-popup_during_fullscreen smart
-
-# window focus follows your mouse movements as the mouse crosses window borders
-focus_follows_mouse no
 
 set_from_resource $i3-wm.bar.background.color i3-wm.bar.background.color "#002b36"
 set_from_resource $i3-wm.bar.statusline.color i3-wm.bar.statusline.color "#93a1a1"
@@ -293,17 +308,10 @@ bar {
   strip_workspace_numbers yes
   strip_workspace_name no
   binding_mode_indicator yes
-
   colors {
       background $i3-wm.bar.background.color
       statusline $i3-wm.bar.statusline.color
       separator  $i3-wm.bar.separator.color
-
-      #                  BORDER  BACKGROUND TEXT
-      focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
-      active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
-      inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
-      urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
   }
 }
 
@@ -313,7 +321,6 @@ bar {
   font $i3-wm.bar.font
   separator_symbol " "
   status_command ~/.config/regolith/i3status-bottom.py
-# status_command ~/.config/regolith/i3status-example.py
   tray_output primary
   workspace_buttons yes
   strip_workspace_numbers yes
@@ -326,7 +333,12 @@ bar {
       separator  $i3-wm.bar.separator.color
 
 #                        BORDER  BACKGROUND TEXT
-      focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
+      #focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
+      #active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
+      #inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
+      #urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
+
+      focused_workspace  $i3-wm.bar.workspace.focused.border.color      "#adf542" "#000000"
       active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
       inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
       urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
@@ -334,6 +346,9 @@ bar {
 }
 
 # Run programs when i3 starts
+
+# compton config file
+set $compton_config /etc/regolith/compton/config
 
 # Start the composite manager
 exec --no-startup-id compton -f --config $compton_config
@@ -348,8 +363,3 @@ exec --no-startup-id /usr/bin/unclutter -b
 exec --no-startup-id /usr/bin/xeventbind resolution /usr/bin/wallpaper-refresh
 
 exec autorandr --change
-# exec xmodmap ~/.Xmodmap
-# exec /usr/lib/x86_64-linux-gnu/notify-osd
-# exec nm-applet
-# exec blueman-applet
-# exec pasystray
