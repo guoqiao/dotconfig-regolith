@@ -11,11 +11,32 @@ def get_exchange_rates(base='NZD', currencies=['CNY', 'AUD', 'USD']):
             result += '={:.2f}{}'.format(rates[currency], currency)
     return result
 
-items = [get_exchange_rates()]
 
-for ticker in yf.Tickers('AIR.NZ ANZ.NZ ^NZ50 BTC-USD').tickers:
-    info = ticker.info
-    price = info.get('bid') or info.get('ask') or info.get('open')
-    items.append('{}={:.2f}'.format(info['symbol'], price))
+def get_yfinance_tickers(tickers='AIR.NZ ANZ.NZ ^NZ50 BTC-USD'):
 
-print(*items)
+    def foreach(ticker):
+        info = ticker.info
+        price = info.get('bid') or info.get('ask') or info.get('open')
+        return '{}={:.2f}'.format(info['symbol'], price)
+
+    return map(foreach, yf.Tickers(tickers).tickers)
+
+
+def get_sina_ticker(ticker='s_sh000001'):
+    resp = requests.get(f'http://hq.sinajs.cn/list={ticker}')
+    if resp.ok:
+        # var hq_str_s_sh000001="上证指数,2920.8968,-22.8557,-0.78,2337229,28902326";
+        text = resp.text
+        left = text.index('"')
+        right = text.rindex('"')
+        assert right - left > 10
+        data = text[left+1:right]
+        name, price, _, percent, _, _ = data.split(',')
+        return '{}:{}({}%)'.format(name, int(float(price)), percent)
+
+
+print(
+    get_exchange_rates(),
+    get_sina_ticker(),
+    *get_yfinance_tickers(),
+)
