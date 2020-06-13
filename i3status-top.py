@@ -2,7 +2,7 @@
 from pathlib import Path
 from i3pystatus import Status
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).absolute().parent
 
 status = Status()
 
