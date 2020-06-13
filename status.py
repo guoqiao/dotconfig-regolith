@@ -50,5 +50,5 @@ def get_sina_ticker(ticker='s_sh000001'):
 print(
     get_exchange_rates(),
     get_sina_ticker(),
-    *get_yfinance_tickers(),
+    #  *get_yfinance_tickers(),
 )
