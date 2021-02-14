@@ -2,4 +2,4 @@
 
 set -xue
 
-sudo apt install -y lm-sensors
+sudo apt install -y lm-sensors flameshot
