@@ -14,7 +14,7 @@ status.register(
         ("%d %a %H:%M %Z", "Asia/Shanghai"),
         ("%d %a %H:%M:%S %Z", "NZ"),
     ],
-    on_leftclick='gnome-control-center datetime',
+    on_rightclick='gnome-control-center datetime',
 )
 
 status.register(
