@@ -37,7 +37,9 @@ status.register(
 status.register(
     "text",
     text='',
-    on_leftclick='gnome-screenshot --interactive --area',
+    # on_leftclick='gnome-screenshot --interactive --area',
+    on_leftclick='/usr/bin/flameshot gui',
+    on_rightclick='/usr/bin/flameshot config',
 )
 
 status.register(
