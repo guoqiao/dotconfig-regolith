@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
+from datetime import datetime
+import pytz
 import requests
 import yfinance as yf
+
+
+def check_hours(str_tz, start, end):
+    now = datetime.now(tz=pytz.timezone(str_tz))
+    return 0 <= now.weekday() <= 4 and start <= now.hour <= end
+
 
 def get_url(url, fmt='text'):
     resp = requests.get(url)
@@ -26,8 +34,6 @@ TICKERS = 'AIR.NZ ANZ.NZ ^NZ50 BTC-USD'
 def get_yfinance_tickers(tickers=TICKERS):
 
     def foreach(ticker):
-        print(ticker)
-        print(dir(ticker))
         info = ticker.get_info()
         price = info.get('bid') or info.get('ask') or info.get('open')
         return '{}={:.2f}'.format(info['symbol'], price)
@@ -35,20 +41,24 @@ def get_yfinance_tickers(tickers=TICKERS):
     return map(foreach, yf.Tickers(tickers).tickers)
 
 
-def get_sina_ticker(ticker='s_sh000001'):
-    text = get_url(f'http://hq.sinajs.cn/list={ticker}')
-    if text:
-        # var hq_str_s_sh000001="上证指数,2920.8968,-22.8557,-0.78,2337229,28902326";
-        left = text.index('"')
-        right = text.rindex('"')
-        assert right - left > 10
-        fields = text[left+1:right]
-        name, price, _, percent, _, _ = fields.split(',')
-        return '{}:{}({}%)'.format(name, int(float(price)), percent)
+def get_sina_tickers(tickers='s_sh000001,s_sh000905,s_sz399975,s_sz002432'):
+    items = []
+    if check_hours('Asia/Shanghai', 9, 15):
+        text = get_url(f'http://hq.sinajs.cn/list={tickers}')
+        for line in text.splitlines():
+            # var hq_str_s_sh000001="上证指数,2920.8968,-22.8557,-0.78,2337229,28902326";
+            left = line.index('"')
+            right = line.rindex('"')
+            assert right - left > 10
+            fields = line[left+1:right]
+            name, price, _, percent, _, _ = fields.split(',')
+            item = '{}:{}({}%)'.format(name, price, percent)
+            items.append(item)
+    return items
 
 
 print(
     get_exchange_rates(),
-    get_sina_ticker(),
-    #  *get_yfinance_tickers(),
+    *get_sina_tickers(),
+    *get_yfinance_tickers(),
 )
