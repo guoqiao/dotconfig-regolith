@@ -79,13 +79,13 @@ status.register(
     format='up:{days}d{hours}h',
 )
 
-#status.register(
-#    'shell',
-#    command='nmcli -t connection show --active | grep -i vpn | cut -d: -f1',
-#    format='{output}',
-#    on_leftclick='gnome-control-center network',  # vpn is in network panel
-#    on_rightclick='nm-connection-editor',
-#)
+status.register(
+    'shell',
+    command='nmcli -t connection show --active | grep -i vpn | cut -d: -f1',
+    format='vpn:{output}',
+    on_leftclick='gnome-control-center network',  # vpn is in network panel
+    on_rightclick='nm-connection-editor',
+)
 
 status.register(
     "network",
