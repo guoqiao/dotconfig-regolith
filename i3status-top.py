@@ -10,18 +10,32 @@ status = Status()
 status.register(
     "clock",
     format=[
-        ("%d %a %H:%M %Z", "UTC"),
-        ("%d %a %H:%M %Z", "Asia/Shanghai"),
         ("%d %a %H:%M:%S %Z", "NZ"),
     ],
     on_rightclick='gnome-control-center datetime',
 )
 
 status.register(
-    'shell',
-    command=str(HERE/'status.py'),
-    format='{output}',
-    interval=3600,
+    "clock",
+    format=[
+        ("%d %a %H:%M %Z", "Asia/Shanghai"),
+    ],
+    on_rightclick='gnome-control-center datetime',
 )
+
+status.register(
+    "clock",
+    format=[
+        ("%d %a %H:%M %Z", "UTC"),
+    ],
+    on_rightclick='gnome-control-center datetime',
+)
+
+#status.register(
+#    'shell',
+#    command=str(HERE/'status.py'),
+#    format='{output}',
+#    interval=3600,
+#)
 
 status.run()
