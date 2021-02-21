@@ -89,11 +89,10 @@ status.register(
 
 status.register(
     "network",
-    #  interface="wlp2s0",
     detect_active=True,
     interval=5,
     auto_units=True,
-    format_up="{essid} {bytes_recv}",
+    format_up="wifi:{essid} {bytes_recv}",
     on_leftclick='gnome-control-center wifi',
     on_rightclick='nm-connection-editor',
 )
