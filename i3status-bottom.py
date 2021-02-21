@@ -44,42 +44,6 @@ status.register(
 )
 
 status.register(
-    "disk",
-    path="/",
-    format="disk:{used:.0f}G",
-    on_leftclick='baobab',  # Disk Usage Analyzer
-)
-
-status.register(
-    "mem",
-    format='mem:{used_mem}G',
-    divisor=1024 * 1024 * 1024,
-)
-
-status.register(
-    "load",
-    format='cpu:{avg1} {avg5} {avg15}',
-    on_leftclick='/snap/bin/gnome-system-monitor --show-processes-tab',
-)
-
-# status.register(
-#     'shell',
-#     command='sensors | grep fan | cut -d: -f2 | tr -d " "',
-#     format='{output}',
-#     on_leftclick='/snap/bin/gnome-system-monitor --show-processes-tab',
-# )
-
-status.register(
-    "temp",
-    format="{temp:.0f}°C",
-)
-
-status.register(
-    "uptime",
-    format='up:{days}d{hours}h',
-)
-
-status.register(
     'shell',
     command='nmcli -t connection show --active | grep -i vpn | cut -d: -f1',
     format='vpn:{output}',
