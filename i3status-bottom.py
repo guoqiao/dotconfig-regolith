@@ -52,7 +52,7 @@ status.register(
 
 status.register(
     "mem",
-    format='ram:{used_mem}G',
+    format='mem:{used_mem}G',
     divisor=1024 * 1024 * 1024,
 )
 
