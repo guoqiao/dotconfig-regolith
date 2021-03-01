@@ -38,7 +38,7 @@ status.register(
 
 status.register(
   "bluetooth",
-  format='bluetooth',
+  format='bluetooth:{name}',
   show_disconnected=True,
   on_leftclick='gnome-control-center bluetooth',
 )
