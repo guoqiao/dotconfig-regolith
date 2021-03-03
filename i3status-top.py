@@ -10,7 +10,7 @@ status = Status()
 status.register(
     "clock",
     format=[
-        ("%d %a %H:%M:%S %Z", "NZ"),
+        ("🇳🇿%d %a %H:%M:%S %Z", "NZ"),
     ],
     on_rightclick='gnome-control-center datetime',
 )
@@ -18,7 +18,7 @@ status.register(
 status.register(
     "clock",
     format=[
-        ("%d %a %H:%M %Z", "Asia/Shanghai"),
+        ("🇨🇳%d %a %H:%M %Z", "Asia/Shanghai"),
     ],
     on_rightclick='gnome-control-center datetime',
 )
@@ -26,7 +26,7 @@ status.register(
 status.register(
     "clock",
     format=[
-        ("%d %a %H:%M %Z", "UTC"),
+        ("🕛%d %a %H:%M %Z", "UTC"),
     ],
     on_rightclick='gnome-control-center datetime',
 )
@@ -35,7 +35,7 @@ status.register(
 status.register(
     "disk",
     path="/",
-    format="disk:{used:.0f}G",
+    format="💽{used:.0f}G",
     on_leftclick='baobab',  # Disk Usage Analyzer
 )
 
@@ -47,7 +47,7 @@ status.register(
 
 status.register(
     "load",
-    format='cpu:{avg1} {avg5} {avg15}',
+    format='📈{avg1} {avg5} {avg15}',
     on_leftclick='/snap/bin/gnome-system-monitor --show-processes-tab',
 )
 
@@ -60,12 +60,17 @@ status.register(
 
 status.register(
     "temp",
-    format="{temp:.0f}°C",
+    format="🌡️{temp:.0f}°C",
 )
 
 status.register(
     "uptime",
-    format='up:{days}d{hours}h',
+    format='⏳{days}d{hours}h',
+)
+
+status.register(
+    "bitcoin",
+    interval=3600,
 )
 
 # status.register('shell', command=str(HERE/'status.py'), format='{output}', interval=600)
