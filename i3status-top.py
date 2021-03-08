@@ -10,7 +10,7 @@ status = Status()
 status.register(
     "clock",
     format=[
-        ("🇳🇿%d %a %H:%M:%S %Z", "NZ"),
+        ("🇳🇿%Z %m.%d %a %H:%M:%S", "NZ"),
     ],
     on_rightclick='gnome-control-center datetime',
 )
@@ -18,7 +18,7 @@ status.register(
 status.register(
     "clock",
     format=[
-        ("🇨🇳%d %a %H:%M %Z", "Asia/Shanghai"),
+        ("🇨🇳%Z %d %a %H:%M", "Asia/Shanghai"),
     ],
     on_rightclick='gnome-control-center datetime',
 )
@@ -26,7 +26,7 @@ status.register(
 status.register(
     "clock",
     format=[
-        ("🕛%d %a %H:%M %Z", "UTC"),
+        ("🌎%Z %d %a %H:%M", "UTC"),
     ],
     on_rightclick='gnome-control-center datetime',
 )
@@ -41,13 +41,13 @@ status.register(
 
 status.register(
     "mem",
-    format='mem:{used_mem}G',
+    format='📈{used_mem}G',
     divisor=1024 * 1024 * 1024,
 )
 
 status.register(
     "load",
-    format='📈{avg1} {avg5} {avg15}',
+    format='🔥{avg1} {avg5} {avg15}',
     on_leftclick='/snap/bin/gnome-system-monitor --show-processes-tab',
 )
 
