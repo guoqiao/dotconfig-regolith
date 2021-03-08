@@ -68,11 +68,6 @@ status.register(
     format='⏳{days}d{hours}h',
 )
 
-status.register(
-    "bitcoin",
-    interval=3600,
-)
-
 # status.register('shell', command=str(HERE/'status.py'), format='{output}', interval=600)
 
 status.run()
