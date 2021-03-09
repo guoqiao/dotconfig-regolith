@@ -33,8 +33,6 @@ smart_gaps on
 bindsym $mod+minus gaps inner current minus 6
 bindsym $mod+plus  gaps inner current plus  6
 
-set_from_resource $rofiTheme rofi.theme "regolith-theme"
-
 # path to terminal. Override this to specify a custom terminal.
 
 # Color values are defined in ~/.Xresources-regolith
@@ -169,6 +167,7 @@ bindsym $mod+Shift+Return exec /usr/bin/sensible-browser
 bindsym $mod+Shift+q kill
 
 # rofi app and window launchers
+set_from_resource $rofiTheme rofi.theme "regolith-theme"
 bindsym $mod+space exec rofi -show drun -theme $rofiTheme
 bindsym $mod+Shift+space exec rofi -show run -theme $rofiTheme
 bindsym $mod+Ctrl+space exec rofi -show window -theme $rofiTheme
