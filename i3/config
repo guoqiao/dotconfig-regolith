@@ -58,6 +58,7 @@ set_from_resource $ws18 i3-wm.workspace.18.name "18"
 set_from_resource $ws19 i3-wm.workspace.19.name "19"
 
 # https://i3wm.org/docs/userguide.html#workspace_screen
+# xrandr --current
 workspace "$ws1" output HDMI-2
 workspace "$ws2" output HDMI-2
 workspace "$ws3" output HDMI-2
@@ -67,9 +68,6 @@ workspace "$ws5" output DP-1
 workspace "$ws6" output DP-1
 workspace "$ws7" output DP-1
 workspace "$ws8" output DP-1
-
-workspace "$ws9" output HDMI-3
-workspace "$ws10" output HDMI-3
 
 # move to workspace
 bindsym $mod+1 workspace $ws1
