@@ -36,31 +36,27 @@ status.register(
     "disk",
     path="/",
     format="💽{used:.0f}G",
-    on_leftclick='baobab',  # Disk Usage Analyzer
+    on_rightclick='baobab',  # Disk Usage Analyzer
 )
 
 status.register(
     "mem",
     format='📈{used_mem}G',
     divisor=1024 * 1024 * 1024,
+    on_rightclick='gnome-system-monitor --show-processes-tab',
 )
 
 status.register(
     "load",
     format='🔥{avg1} {avg5} {avg15}',
-    on_leftclick='/snap/bin/gnome-system-monitor --show-processes-tab',
+    on_rightclick='gnome-system-monitor --show-processes-tab',
 )
 
-# status.register(
-#     'shell',
-#     command='sensors | grep fan | cut -d: -f2 | tr -d " "',
-#     format='{output}',
-#     on_leftclick='/snap/bin/gnome-system-monitor --show-processes-tab',
-# )
-
 status.register(
-    "temp",
-    format="🌡️{temp:.0f}°C",
+    'shell',
+    command='sensors | grep "Package" | cut -d" " -f5',
+    format='🌡️{output}',
+    on_rightclick='gnome-system-monitor --show-processes-tab',
 )
 
 status.register(
