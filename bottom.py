@@ -34,6 +34,13 @@ status.register(
 )
 
 status.register(
+  "text",
+  text='🔊',
+  on_leftclick='gnome-control-center sound',
+  on_rightclick='pavucontrol',
+)
+
+status.register(
     "text",
     text='📸',
     on_leftclick='/usr/bin/flameshot gui',
