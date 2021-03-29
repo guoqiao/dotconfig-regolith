@@ -53,17 +53,23 @@ status.register(
 )
 
 status.register(
-    'shell',
-    command='sensors | grep "Package" | cut -d" " -f5',
-    format='🌡️{output}',
-    on_rightclick='gnome-system-monitor --show-processes-tab',
-)
-
-status.register(
     "uptime",
     format='⏳{days}d{hours}h',
 )
 
-# status.register('shell', command=str(HERE/'status.py'), format='{output}', interval=600)
+status.register(
+    'shell',
+    command='sensors | grep "Package" | cut -d" " -f5',
+    format='i9🌡️{output}',
+    on_rightclick='gnome-system-monitor --show-processes-tab',
+)
+
+status.register(
+    'shell',
+    command="out=$(ssh pi bash bin/pi_stat.sh) && (echo $out | cut -d: -f2 | xargs) || echo pi offline",
+    format='{output}',
+    interval=10,
+    on_rightclick='',
+)
 
 status.run()
