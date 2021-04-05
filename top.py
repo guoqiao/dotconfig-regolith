@@ -66,7 +66,7 @@ status.register(
 
 status.register(
     'shell',
-    command="out=$(ssh pi bash bin/pi_stat.sh) && (echo $out | cut -d: -f2 | xargs) || echo pi offline",
+    command="(ssh pi bash bin/pi_stat.sh | cut -d: -f2 | xargs) || echo pi offline",
     format='{output}',
     interval=10,
     on_rightclick='',
