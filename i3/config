@@ -301,7 +301,7 @@ bar {
   position top
   font $i3-wm.bar.font
   separator_symbol " "
-  status_command ~/.config/regolith/top.py
+  status_command ~/.config/regolith/bar.py --mode top
   tray_output none
   workspace_buttons no
   strip_workspace_numbers yes
@@ -319,7 +319,7 @@ bar {
   position bottom
   font $i3-wm.bar.font
   separator_symbol " "
-  status_command ~/.config/regolith/bottom.py
+  status_command ~/.config/regolith/bar.py --mode bottom
   tray_output primary
   workspace_buttons yes
   strip_workspace_numbers yes
