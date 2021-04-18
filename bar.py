@@ -86,12 +86,12 @@ if mode in ["one", "bottom"]:
         on_rightclick='nm-connection-editor',
     )
 
-    status.register(
-        "bluetooth",
-        format='🎧{name}',
-        show_disconnected=True,
-        on_leftclick='gnome-control-center bluetooth',
-    )
+    # status.register(
+    #     "bluetooth",
+    #     format='🎧{name}',
+    #     show_disconnected=True,
+    #     on_leftclick='gnome-control-center bluetooth',
+    # )
 
 if mode in ["one", "top"]:
 
@@ -99,7 +99,7 @@ if mode in ["one", "top"]:
     status.register(
         "clock",
         format=[
-            ("🇳🇿%Z %m.%d %a %H:%M:%S", "NZ"),
+            ("🇳🇿%m.%d %a %H:%M:%S", "NZ"),
         ],
         on_rightclick='gnome-control-center datetime',
     )
@@ -107,7 +107,7 @@ if mode in ["one", "top"]:
     status.register(
         "clock",
         format=[
-            ("🇨🇳%Z %d %a %H:%M", "Asia/Shanghai"),
+            ("🇨🇳%H:%M", "Asia/Shanghai"),
         ],
         on_rightclick='gnome-control-center datetime',
     )
@@ -115,16 +115,16 @@ if mode in ["one", "top"]:
     status.register(
         "clock",
         format=[
-            ("🌎%Z %d %a %H:%M", "UTC"),
+            ("🌎%d %H:%M", "UTC"),
         ],
         on_rightclick='gnome-control-center datetime',
     )
 
     status.register(
-        "disk",
-        path="/",
-        format="💽{used:.0f}G",
-        on_rightclick='baobab',  # Disk Usage Analyzer
+        'shell',
+        command='sensors | grep "Package" | cut -d" " -f5',
+        format='🌡️{output}',
+        on_rightclick='gnome-system-monitor --show-processes-tab',
     )
 
     status.register(
@@ -134,10 +134,17 @@ if mode in ["one", "top"]:
         on_rightclick='gnome-system-monitor --show-processes-tab',
     )
 
+    # status.register(
+    #     "load",
+    #     format='🔥{avg1} {avg5} {avg15}',
+    #     on_rightclick='gnome-system-monitor --show-processes-tab',
+    # )
+
     status.register(
-        "load",
-        format='🔥{avg1} {avg5} {avg15}',
-        on_rightclick='gnome-system-monitor --show-processes-tab',
+        "disk",
+        path="/",
+        format="💽{used:.0f}G",
+        on_rightclick='baobab',  # Disk Usage Analyzer
     )
 
     status.register(
@@ -145,11 +152,5 @@ if mode in ["one", "top"]:
         format='⏳{days}d{hours}h',
     )
 
-    status.register(
-        'shell',
-        command='sensors | grep "Package" | cut -d" " -f5',
-        format='🌡️{output}',
-        on_rightclick='gnome-system-monitor --show-processes-tab',
-    )
 
 status.run()
