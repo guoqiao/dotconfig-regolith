@@ -1,3 +1,17 @@
 # Date Time
 [time]
-interval=xresource:i3xrocks.time.interval 10
+instance=utc
+TZ=UTC
+command=date +"%Z %d %H:%M"
+interval=10
+
+[time]
+instance=cn
+TZ=Asia/Shanghai
+command=date +"%Z %d %H:%M"
+interval=10
+
+[time]
+instance=local
+command=date +"%Z %m-%d %T %a"
+interval=1
