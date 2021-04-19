@@ -4,14 +4,17 @@ instance=utc
 TZ=UTC
 command=date +"%Z %d %H:%M"
 interval=10
+color=#0000FF
 
 [time]
 instance=cn
 TZ=Asia/Shanghai
 command=date +"%Z %d %H:%M"
 interval=10
+color=#FF0000
 
 [time]
 instance=local
 command=date +"%Z %m-%d %T %a"
 interval=1
+color=#00FF00
