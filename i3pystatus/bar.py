@@ -99,7 +99,7 @@ if mode in ["one", "top"]:
     status.register(
         "clock",
         format=[
-            ("🇳🇿%m.%d %a %H:%M:%S", "NZ"),
+            ("🇳🇿%m-%d %H:%M:%S %a", "NZ"),
         ],
         on_rightclick='gnome-control-center datetime',
     )
@@ -107,7 +107,7 @@ if mode in ["one", "top"]:
     status.register(
         "clock",
         format=[
-            ("🇨🇳%H:%M", "Asia/Shanghai"),
+            ("🇨🇳%d %H:%M", "Asia/Shanghai"),
         ],
         on_rightclick='gnome-control-center datetime',
     )
