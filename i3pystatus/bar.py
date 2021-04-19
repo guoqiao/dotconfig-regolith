@@ -68,24 +68,6 @@ if mode in ["one", "bottom"]:
         on_rightclick='/usr/bin/flameshot config',
     )
 
-    status.register(
-        "network",
-        detect_active=True,
-        interval=5,
-        auto_units=True,
-        format_up="📶{essid} {bytes_recv}",
-        on_leftclick='gnome-control-center wifi',
-        on_rightclick='nm-connection-editor',
-    )
-
-    status.register(
-        'shell',
-        command='nmcli -t connection show --active | grep -i vpn | cut -d: -f1',
-        format='👻{output}',
-        on_leftclick='gnome-control-center network',  # vpn is in network panel
-        on_rightclick='nm-connection-editor',
-    )
-
     # status.register(
     #     "bluetooth",
     #     format='🎧{name}',
@@ -151,6 +133,25 @@ if mode in ["one", "top"]:
         "uptime",
         format='⏳{days}d{hours}h',
     )
+
+    status.register(
+        "network",
+        detect_active=True,
+        interval=5,
+        auto_units=True,
+        format_up="📶{essid} {bytes_recv:>5}",
+        on_leftclick='gnome-control-center wifi',
+        on_rightclick='nm-connection-editor',
+    )
+
+    status.register(
+        'shell',
+        command='nmcli -t connection show --active | grep -i vpn | cut -d: -f1',  # noqa
+        format='👻{output}',
+        on_leftclick='gnome-control-center network',  # vpn is in network panel
+        on_rightclick='nm-connection-editor',
+    )
+
 
 
 status.run()
