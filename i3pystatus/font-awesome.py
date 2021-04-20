@@ -26,54 +26,54 @@ if mode in ["one", "bottom"]:
 
     status.register(
         "text",
-        text='💀',
+        text='',
         on_leftclick='gnome-session-quit --power-off',
     )
 
     status.register(
         "text",
-        text='🔓',
+        text='',
         on_leftclick='gnome-screensaver-command --lock',
     )
 
     status.register(
         "text",
-        text='😴',
+        text='',
         on_leftclick='systemctl suspend',
     )
 
     status.register(
         "text",
-        text='👋',
+        text='',
         on_leftclick='gnome-session-quit --logout',
     )
 
     status.register(
         "text",
-        text='⚙️',
+        text='',
         on_leftclick='gnome-control-center',
     )
 
     status.register(
         "text",
-        text='🔊',
+        text='',
         on_leftclick='gnome-control-center sound',
         on_rightclick='pavucontrol',
     )
 
     status.register(
         "text",
-        text='📸',
+        text='',
         on_leftclick='/usr/bin/flameshot gui',
         on_rightclick='/usr/bin/flameshot config',
     )
 
-    # status.register(
-    #     "bluetooth",
-    #     format='🎧{name}',
-    #     show_disconnected=True,
-    #     on_leftclick='gnome-control-center bluetooth',
-    # )
+    status.register(
+       "bluetooth",
+       format='{name}',
+       show_disconnected=True,
+       on_leftclick='gnome-control-center bluetooth',
+    )
 
 if mode in ["one", "top"]:
 
@@ -110,8 +110,12 @@ if mode in ["one", "top"]:
     )
 
     status.register(
+        "battery",
+    )
+
+    status.register(
         "mem",
-        format='{used_mem}G',
+        format='{used_mem}G',
         divisor=1024 * 1024 * 1024,
         on_rightclick='gnome-system-monitor --show-processes-tab',
     )
