@@ -105,13 +105,13 @@ if mode in ["one", "top"]:
     status.register(
         'shell',
         command='sensors | grep "Package" | cut -d" " -f5',
-        format='🌡️{output}',
+        format='{output}',
         on_rightclick='gnome-system-monitor --show-processes-tab',
     )
 
     status.register(
         "mem",
-        format='📈{used_mem}G',
+        format='{used_mem}G',
         divisor=1024 * 1024 * 1024,
         on_rightclick='gnome-system-monitor --show-processes-tab',
     )
@@ -125,13 +125,13 @@ if mode in ["one", "top"]:
     status.register(
         "disk",
         path="/",
-        format="💽{used:.0f}G",
+        format="{used:.0f}G",
         on_rightclick='baobab',  # Disk Usage Analyzer
     )
 
     status.register(
         "uptime",
-        format='⏳{days}d{hours}h',
+        format='{days}d{hours}h',
     )
 
     status.register(
@@ -139,7 +139,7 @@ if mode in ["one", "top"]:
         detect_active=True,
         interval=5,
         auto_units=True,
-        format_up="📶{essid} {bytes_recv:>5}",
+        format_up="{essid} {bytes_recv:>5}",
         on_leftclick='gnome-control-center wifi',
         on_rightclick='nm-connection-editor',
     )
@@ -147,7 +147,7 @@ if mode in ["one", "top"]:
     status.register(
         'shell',
         command='nmcli -t connection show --active | grep -i vpn | cut -d: -f1',  # noqa
-        format='👻{output}',
+        format='{output}',
         on_leftclick='gnome-control-center network',  # vpn is in network panel
         on_rightclick='nm-connection-editor',
     )
