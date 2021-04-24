@@ -116,11 +116,11 @@ if mode in ["one", "top"]:
         on_rightclick='gnome-system-monitor --show-processes-tab',
     )
 
-    # status.register(
-    #     "load",
-    #     format='🔥{avg1} {avg5} {avg15}',
-    #     on_rightclick='gnome-system-monitor --show-processes-tab',
-    # )
+    status.register(
+       "load",
+       format='{avg1} {avg5} {avg15}',
+       on_rightclick='gnome-system-monitor --show-processes-tab',
+    )
 
     status.register(
         "disk",
