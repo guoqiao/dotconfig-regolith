@@ -110,10 +110,6 @@ if mode in ["one", "top"]:
     )
 
     status.register(
-        "battery",
-    )
-
-    status.register(
         "mem",
         format='{used_mem}G',
         divisor=1024 * 1024 * 1024,
