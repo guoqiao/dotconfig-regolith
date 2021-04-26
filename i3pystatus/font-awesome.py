@@ -62,17 +62,17 @@ if mode in ["one", "bottom"]:
     )
 
     status.register(
+       "bluetooth",
+       format='',
+       show_disconnected=True,
+       on_leftclick='gnome-control-center bluetooth',
+    )
+
+    status.register(
         "text",
         text='',
         on_leftclick='/usr/bin/flameshot gui',
         on_rightclick='/usr/bin/flameshot config',
-    )
-
-    status.register(
-       "bluetooth",
-       format='{name}',
-       show_disconnected=True,
-       on_leftclick='gnome-control-center bluetooth',
     )
 
 if mode in ["one", "top"]:
