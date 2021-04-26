@@ -83,6 +83,7 @@ if mode in ["one", "top"]:
         format=[
             ("🇳🇿%m-%d %H:%M:%S %a", "NZ"),
         ],
+        color="#00FF00",
         on_rightclick='gnome-control-center datetime',
     )
 
