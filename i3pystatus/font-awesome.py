@@ -3,6 +3,31 @@
 import argparse
 from i3pystatus import Status
 
+# https://fontawesome.com/v4.7/cheatsheet/
+FONT_AWESOME = {
+    "poweroff": "",
+    "lock": "",
+    "screenshot": "",
+    "note": "",
+    "bluetooth": "",
+    "sound": "",
+    "sleep": "",
+    "logout": "",
+    "settings": "",
+}
+
+
+EMOJI = {
+}
+
+
+ICON = FONT_AWESOME
+
+
+def icon(name):
+    return ICON.get(name, "")
+
+
 parser = argparse.ArgumentParser(
     "i3pystatus bar",
     formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -26,53 +51,60 @@ if mode in ["one", "bottom"]:
 
     status.register(
         "text",
-        text='',
+        text=icon("poweroff"),
         on_leftclick='gnome-session-quit --power-off',
     )
 
     status.register(
         "text",
-        text='',
+        text=icon("lock"),
         on_leftclick='gnome-screensaver-command --lock',
     )
 
     status.register(
         "text",
-        text='',
+        text=icon("sleep"),
         on_leftclick='systemctl suspend',
     )
 
     status.register(
         "text",
-        text='',
+        text=icon("logout"),
         on_leftclick='gnome-session-quit --logout',
     )
 
     status.register(
         "text",
-        text='',
+        text=icon("settings"),
         on_leftclick='gnome-control-center',
     )
 
     status.register(
         "text",
-        text='',
+        text=icon("sound"),
         on_leftclick='gnome-control-center sound',
         on_rightclick='pavucontrol',
     )
 
     status.register(
-       "bluetooth",
-       format='',
-       show_disconnected=True,
-       on_leftclick='gnome-control-center bluetooth',
+        "bluetooth",
+        format="{}".format(icon("bluetooth")),
+        show_disconnected=True,
+        on_leftclick='gnome-control-center bluetooth',
     )
 
     status.register(
         "text",
-        text='',
+        text=icon("screenshot"),
         on_leftclick='/usr/bin/flameshot gui',
         on_rightclick='/usr/bin/flameshot config',
+    )
+
+    status.register(
+        "text",
+        text=icon("note"),
+        on_leftclick='code -n ~/note.md',
+        on_rightclick='code -n ~/note.md',
     )
 
 if mode in ["one", "top"]:
