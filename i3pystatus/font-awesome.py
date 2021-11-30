@@ -184,6 +184,12 @@ if mode in ["one", "top"]:
         on_leftclick='gnome-control-center network',  # vpn is in network panel
         on_rightclick='nm-connection-editor',
     )
+    status.register(
+        'shell',
+        interval=2,
+        command='xclip -o',
+        format='{output}',
+    )
 
 
 
