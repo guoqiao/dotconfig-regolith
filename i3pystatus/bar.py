@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
+from os.path import abspath, dirname, join
 import argparse
 from i3pystatus import Status
+
+HERE = abspath(dirname(__file__))
 
 # https://fontawesome.com/v4.7/cheatsheet/
 FONT_AWESOME = {
@@ -186,11 +189,17 @@ if mode in ["one", "top"]:
     )
     status.register(
         'shell',
+        interval=60,
+        command=join(HERE, 'stock.py'),
+        format='{output}',
+        on_leftclick='google-chrome https://www.binance.com/zh-CN/markets',
+    )
+    status.register(
+        'shell',
         interval=2,
         command='xclip -o',
         format='{output}',
     )
-
 
 
 status.run()
