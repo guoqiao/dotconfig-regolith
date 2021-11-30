@@ -9,7 +9,7 @@ CLIENT = Client(API_KEY, API_SECRET)
 
 def get_current_price(symbol):
     resp = CLIENT.get_symbol_ticker(symbol=symbol)
-    return resp.get('price')
+    return resp.get('price', '0.0').split('.', maxsplit=1)[0]
 
 
 def main():
