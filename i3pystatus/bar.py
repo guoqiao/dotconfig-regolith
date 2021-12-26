@@ -197,7 +197,7 @@ if mode in ["one", "top"]:
     status.register(
         'shell',
         interval=2,
-        command='xclip -o | cut -c 1-20',
+        command='(xclip -o 2> /dev/null || echo ".") | cut -c 1-20',
         format='{output}',
     )
 
