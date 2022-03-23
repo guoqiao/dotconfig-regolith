@@ -675,12 +675,15 @@ bindsym Shift+$mod+bracketright move workspace to output right
 
 # https://i3wm.org/docs/userguide.html#workspace_screen
 # xrandr --current
-#workspace "$ws1" output HDMI-2
-#workspace "$ws2" output HDMI-2
-#workspace "$ws3" output HDMI-2
-#workspace "$ws4" output HDMI-2
-#
-#workspace "$ws5" output DP-1
-#workspace "$ws6" output DP-1
-#workspace "$ws7" output DP-1
-#workspace "$ws8" output DP-1
+workspace "$ws1" output HDMI-2
+workspace "$ws2" output HDMI-2
+workspace "$ws3" output HDMI-2
+workspace "$ws4" output HDMI-2
+
+workspace "$ws5" output DP-1
+workspace "$ws6" output DP-1
+workspace "$ws7" output DP-1
+workspace "$ws8" output DP-1
+
+# workspace "$ws9" output HDMI-2
+# workspace "$ws0" output HDMI-2
