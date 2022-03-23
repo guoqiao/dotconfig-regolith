@@ -137,6 +137,13 @@ if mode in ["one", "top"]:
         ],
         on_rightclick='gnome-control-center datetime',
     )
+    status.register(
+        "clock",
+        format=[
+            ("🌎%d %H:%M", "EST"),
+        ],
+        on_rightclick='gnome-control-center datetime',
+    )
 
     status.register(
         'shell',
