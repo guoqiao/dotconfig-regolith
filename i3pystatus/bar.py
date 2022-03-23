@@ -140,7 +140,7 @@ if mode in ["one", "top"]:
     status.register(
         "clock",
         format=[
-            ("🌎%d %H:%M", "EST"),
+            ("🇵🇷%d %H:%M", "America/Puerto_Rico"),
         ],
         on_rightclick='gnome-control-center datetime',
     )
