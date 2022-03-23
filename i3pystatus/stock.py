@@ -23,10 +23,12 @@ def get_exchange_rate(q="NZD_CNY"):
 
 
 def main():
-    btc = get_current_price('BTCUSDT')
-    eth = get_current_price('ETHUSDT')
-    nzd = get_exchange_rate()
-    print('btc:{}|eth:{}|nzd:{}'.format(btc, eth, nzd))
+    kv = {
+        'btc': get_current_price('BTCUSDT'),
+        'eth': get_current_price('ETHUSDT'),
+        #  'nzd': get_exchange_rate(),
+    }
+    print('|'.join([f'{k}:{v}' for k, v in kv.items()]))
 
 
 if __name__ == "__main__":
