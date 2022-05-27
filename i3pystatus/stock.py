@@ -3,14 +3,22 @@ import requests
 from os import getenv
 from binance.client import Client
 
+from dotenv import load_dotenv
+load_dotenv()
+
 API_KEY = getenv('BINANCE_API_KEY')
 API_SECRET = getenv('BINANCE_API_SECRET')
 CLIENT = Client(API_KEY, API_SECRET)
 
 
-def get_current_price(symbol):
+def get_price(coin, base='USDT'):
+    symbol = coin.upper() + base
     resp = CLIENT.get_symbol_ticker(symbol=symbol)
     return resp.get('price', '0.0').split('.', maxsplit=1)[0]
+
+
+def get_prices(coins):
+    return {coin: get_price(coin) for coin in coins}
 
 
 def get_exchange_rate(q="NZD_CNY"):
@@ -23,14 +31,9 @@ def get_exchange_rate(q="NZD_CNY"):
 
 
 def main():
-    kv = {
-        'btc': get_current_price('BTCUSDT'),
-        'eth': get_current_price('ETHUSDT'),
-        #  'nzd': get_exchange_rate(),
-    }
-    print('|'.join([f'{k}:{v}' for k, v in kv.items()]))
+    prices = get_prices(['BTC', 'ETH'])
+    print('|'.join([f'{coin}:{price}' for coin, price in prices.items()]))
 
 
 if __name__ == "__main__":
     main()
-
